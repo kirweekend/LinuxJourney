@@ -1,48 +1,48 @@
-# System V Overview
+# Обзор System V
 
-## Lesson Content
+## Содержание урока
 
-The main purpose of init is to start and stop essential processes on the system. There are three major implementations of init in Linux, System V, Upstart and systemd. In this lesson, we're going to go over the most traditional version of init, System V init or Sys V (pronounced as 'System Five'). 
+Основной целью init является запуск и остановка основных процессов в системе. Существует три основных реализации init в Linux, System V, Upstart и systemd. В этом уроке мы рассмотрим наиболее традиционную версию init, System V init или Sys V (произносится как «System Five»). 
 
-To find out if you are using the Sys V init implementation, if you have an /etc/inittab file you are most likely running Sys V. 
+Чтобы узнать, используете ли вы реализацию Sys V init, проверьте файл /etc/inittab, если он у вас есть, то скорее всего вы используете Sys V. 
 
-Sys V starts and stops processes sequentially, so let's say if you wanted to start up a service named foo-a, well before foo-b can work, you have to make sure foo-a is already running. Sys V does that with scripts, these scripts start and stop services for us, we can write our own scripts or most of the time use the ones that are already built in the operating system and are used to load essential services. 
+Sys V запускает и останавливает процессы последовательно, так скажем, если вы хотите запустить службу с именем foo-a, задолго до foo-b, то вы должны убедиться, что foo-a уже запущен. Sys V делает это со скриптами, эти скрипты запускают и останавливают сервисы для нас, мы можем написать наши собственные скрипты или в большинстве случаев использовать те, которые уже встроены в операционную систему и используются для загрузки основных служб. 
 
-The pros of using this implementation of init, is that it's relatively easy to solve dependencies, since you know foo-a comes before foo-b, however performance isn't great because usually one thing is starting or stopping at a time. 
+Плюсы использования этой реализации init - в том, что относительно легко разрешать зависимости, так как вы знаете, что foo-a предшествует foo-b, однако производительность не велика, потому что обычно одна вещь запускается или останавливается за один раз.
 
-When using Sys V, the state of the machine is defined by runlevels which are set from 0 to 6. These different modes will vary depending on the distribution, but most of the time will look like the following: 
+При использовании Sys V состояние машины определяется уровнями запуска, которые устанавливаются в диапазоне от 0 до 6. Эти различные режимы будут зависеть от дистрибутива, но большую часть времени это будет выглядеть следующим образом: 
 
 <ul>
-<li>0: Shutdown</li>
-<li>1: Single User Mode</li>
-<li>2: Multiuser mode without networking</li>
-<li>3: Multiuser mode with networking</li>
-<li>4: Unused</li>
-<li>5: Multiuser mode with networking and GUI</li>
-<li>6: Reboot</li>
+<li>0: Выключение</li>
+<li>1: Однопользовательский режим</li>
+<li>2: Многопользовательский режим без сети</li>
+<li>3: Многопользовательский режим с сетью</li>
+<li>4: Неиспользуемый</li>
+<li>5: Многопользовательский режим с сетью и графическим интерфейсом</li>
+<li>6: Перезагрузка</li>
 </ul>
 
-When your system starts up, it looks to see what runlevel you are in and executes scripts located inside that runlevel configuration. The scripts are located in <b>/etc/rc.d/rc[runlevel number].d/</b> or <b>/etc/init.d</b>. Scripts that start with S(start) or K(kill) will run on startup and shutdown, respectively. The numbers next to these characters are the sequence they run in. 
+Когда ваша система запускается, она смотрит на каком уровне запуска вы находитесь, и выполняет скрипты, расположенные внутри конфигурации уровня запуска. Сценарии расположены в <b>/etc/rc.d/rc[номер уровня запуска].d/</b> или <b>/etc/init.d</b>. Скрипты, которые начинаются с S (start) или K (kill), будут запускаться при запуске и завершении, соответственно. Номера рядом с этими символами - последовательность, в которой они выполняются. 
 
-For example:
+Например:
 
 <pre>
 pete@icebox:/etc/rc.d/rc0.d$ ls
 K10updates  K80openvpn        
 </pre>
 
-We see when we switch to runlevel 0 or shutdown mode, our machine will try to run a script to kill the updates services and then openvpn. To find out what runlevel your machine is booting into, you can see the default runlevel in the /etc/inittab file. You can also change your default runlevel in this file as well. 
+Когда мы переключаемся на уровень 0 или режим выключения, наша машина будет пытаться запустить скрипт, чтобы убить сервисы обновлений, а затем openvpn. Чтобы узнать, на каком уровне запуска ваша машина загружается, вы должны перейти по умолчанию в файле /etc/inittab. Также можно изменить уровень запуска по умолчанию в этом файле.
 
-One thing to note, System V is slowly getting replaced, maybe not today, or even years from now. However, you may see runlevels come up in other init implementations, this is primarily to support those services that are only started or stopped using System V init scripts. 
+Следует отметить, что System V постепенно заменяется, возможно, не сегодня, но годами позже. Вы можете увидеть, что уровни запуска появляются в других реализациях init, это прежде всего для поддержки тех служб, которые только запускаются или останавливаются с использованием скриптов инициализации System V.
 
-## Exercise
+## Задание
 
-If you are running System V, change the default runlevel of your machine to something else and see what happens.
+Если вы используете System V, измените уровень выполнения вашей машины по умолчанию на что-либо другое и посмотрите, что произойдет.
 
-## Quiz Question
+## Вопрос
 
-What runlevel is usually used for shutdown?
+Какой уровень запуска обычно используется для завершения работы?
 
-## Quiz Answer
+## Ответ
 
 0

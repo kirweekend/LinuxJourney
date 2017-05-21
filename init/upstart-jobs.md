@@ -1,10 +1,10 @@
-# Upstart Jobs
+# Задания Upstart 
 
-## Lesson Content
+## Содержание урока
 
-Upstart can trigger a lot of events and jobs to run, unfortunately there is no easy way to see where an event or job originated, so you'll have to poke around the job configurations in /etc/init. Most of the time, you won't ever need to look at the Upstart job configuration files, but you will want to control some specific jobs more easily. There are a lot of useful commands you can use in an Upstart system. 
+Upstart может запускать множество событий и заданий для запуска, к сожалению, нет простого способа увидеть, где произошло событие или задание, поэтому вам придется совать конфигурацию заданий в /etc/init. В большинстве случаев вам не нужно будет искать файлы конфигурации задания Upstart, но вам будет проще управлять некоторыми конкретными задачами. В системе Upstart имеется много полезных команд. 
 
-<b>View jobs</b>
+<b>Просмотр заданий</b>
 
 <pre>initctl list
 
@@ -13,40 +13,40 @@ console stop/waiting
 ...
 </pre>
 
-You'll see a list of Upstart jobs with different statuses applied to them. In each line, the job name is the first value and the second field (before the /) is actually the goal of the job, the third value (after the /) is the current status. So we see that our shutdown job eventually wants to stop, but it is currently in a state of waiting. The job status and goals will change as you start or stop jobs. 
+Вы увидите список заданий Upstart с различными статусами, примененными к ним. В каждой строке имя задания является первым значением, а второе поле (перед /) на самом деле является целью задания, третье значение (после /) - это текущий статус. Таким образом, мы видим, что наше задание по остановке в конце концов хочет остановиться, но сейчас она находится в состоянии ожидания. Статус задания и цели будут меняться при запуске или остановке заданий. 
 
-<b>View specific job</b>
+<b>Просмотреть конкретное задание</b>
 
 <pre>initctl status networking
 networking start/running
 </pre>
 
-We won't get into the details of how to write an Upstart job configuration, however we already know that jobs are stopped, started and restarted in these configurations. These jobs also emit events, so they can start other jobs. We'll go through the manual commands of the Upstart operation, but if you are curious, you should dig into the .conf files in more depth.
+Мы не будем подробно описывать, как написать конфигурацию задания Upstart, но мы уже знаем, что задания останавливаются, запускаются и перезапускаются в этих конфигурациях. Эти задания также генерируют события, поэтому они могут запускать другие задания. Мы пройдем ручные команды операции Upstart, но если вам интересно, вы должны углубиться в файлы .conf.
 
-<b>Manually start a job</b>
+<b>Ручное начало задания</b>
 
 <pre>$ sudo initctl start networking</pre>
 
-<b>Manually stop a job</b>
+<b>Ручная остановка задания</b>
 
 <pre>$ sudo initctl stop networking</pre>
 
-<b>Manually restart a job</b>
+<b>Ручная перезагрузка задания</b>
 
 <pre>$ sudo initctl restart networking</pre>
 
-<b>Manually emit an event</b>
+<b>Вручную вызывать событие</b>
 
 <pre>$ sudo initctl emit some_event</pre>
 
-## Exercise
+## Задание
 
-Observe your list of Upstart jobs, now change the job state with one of the commands we learned today. What do you notice afterwards?
+Понаблюдайте за своим списком задач Upstart, измените состояние задания с помощью одной из команд, которые мы узнали сегодня. Что изменилось?
 
-## Quiz Question
+## Вопрос
 
-How would I manually restart an Upstart job called peanuts?
+Как вручную перезапустить задание Upstart под названием peanuts?
 
-## Quiz Answer
+## Ответ
 
 sudo initctl restart peanuts

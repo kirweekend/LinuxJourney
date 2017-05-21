@@ -1,35 +1,35 @@
-# System V Service
+# Служба System V
 
-## Lesson Content
+## Содержание урока
 
-There are many command line tools you can use to manage Sys V services. 
+Существует множество инструментов командной строки, которые можно использовать для управления службами Sys V.
 
-<b>List services</b>
+<b>Перечень инструментов</b>
 
 <pre>$ service --status-all</pre>
 
-<b>Start a service</b>
+<b>Начало сервиса</b>
 
 <pre>$ sudo service networking start</pre>
 
-<b>Stop a service</b>
+<b>Остановка сервиса</b>
 
 <pre>$ sudo service networking stop</pre>
 
-<b>Restart a service</b>
+<b>Перезагрузка сервиса</b>
 
 <pre>$ sudo service networking restart</pre>
 
-These commands aren't specific to Sys V init systems, you can use these commands to manage Upstart services as well. Since Linux is trying to move away from the more traditional Sys V init scripts, there are still things in place to help that transition. 
+Эти команды не являются специфичными для систем инициализации Sys V, вы можете использовать эти команды для управления службами Upstart. Поскольку Linux пытается отойти от более традиционных скриптов инициализации Sys V, в этом процессе они все еще присутствуют.
 
-## Exercise
+## Задание
 
-Manage a couple of services and change their states, what do you observe?
+Протестируйте несколько сервисов и измените их состояния, что вы заметили?
 
-## Quiz Question
+## Вопрос
 
-What is the command to stop a service named peanut with Sys V?
+Какая команда остановит сервис с именем peanut?
 
-## Quiz Answer
+## Ответ
 
 sudo service peanut stop

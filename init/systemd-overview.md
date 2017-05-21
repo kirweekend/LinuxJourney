@@ -1,47 +1,47 @@
-# Systemd Overview
+# Обзор Systemd
 
-## Lesson Content
+## Содержание урока
 
-Systemd is slowly becoming the emerging standard for init. If you have a /usr/lib/systemd directory, you're most likely using systemd.
+Systemd постепенно становится новым стандартом init. Если у вас есть каталог /usr/lib/systemd, вы, скорее всего, используете systemd.
 
-Systemd uses goals to get your system up and running. Basically you have a target that you want to achieve and this target also has dependencies that we need to achieve. Systemd is extremely flexible and robust, it does not follow a strict sequence to get processes started. Here's what happens during the typical systemd boot:
+Systemd использует задачи для запуска системы и запускает ее. Как правило есть цель, которую нужно достичь, и эта цель также имеет зависимости, которые нам нужно достичь. Systemd чрезвычайно гибок и устойчив, он не следует строгой последовательности для запуска запущенных процессов. Вот что происходит во время типичной загрузки systemd:
 
 <ol>
-<li>First, systemd loads it's configuration files, usually located in /etc/systemd/system or /usr/lib/systemd/system</li>
-<li>Then it determines its boot goal, which is usually default.target</li>
-<li>Systemd figures out the dependencies of the boot target and activates them</l>
+<li>Первое, systemd загружает свои конфигурационные файлы, обычно находящиеся в /etc/systemd/system или /usr/lib/systemd /system</li>
+<li>Затем он определяет свою загрузочную цель, которая обычно является default.target</li>
+<li>Systemd определяет зависимости целевой загрузки и активирует их</l>
 </ol>
 
-Similar to Sys V runlevels, systemd boots into different targets:
+Подобно уровням Sys V, systemd загружается в разные целевые объекты:
 
 <ul>
-<li>poweroff.target - shutdown system</li>
-<li>rescue.target - single user mode</li>
-<li>multi-user.target - multiuser with networking</li>
-<li>graphical.target - multiuser with networking and GUI</li>
-<li>reboot.target - restart</li>
+<li>poweroff.target - выключение системы</li>
+<li>rescue.target - однопользовательский режим</li>
+<li>multi-user.target - многопользовательский режим с сетью</li>
+<li>graphical.target - многопользовательский с сетью и графическим интерфейсом</li>
+<li>reboot.target - перезагрузка</li>
 </ul>
 
-The default boot goal of default.target usually points to the graphical.target. 
+Задача по умолчанию для default.target обычно указывает на graphical.target. 
 
-The main object that systemd works with are known as units. Systemd doesn't just stop and start services, it can mount filesystems, monitor your network sockets, etc and because of that robustness it has different types of units it operates. The most common units are:
+Основной объект, с которым работает systemd, называется единицами. Systemd не просто останавливает и запускает службы, он может монтировать файловые системы, отслеживать сетевые сокеты и т.д., И из-за этой надежности он имеет различные типы устройств, которые он использует. Наиболее распространенными единицами являются:
 
 <ul>
-<li>Service units - these are the services we've been starting and stopping, these unit files end in .service</li>
-<li>Mount units - These mount filesystems, these unit files end in .mount</li>
-<li>Target units - These group together other units, the files end in .target</li>
+<li>Service units - это сервисы, которые мы запускали и останавливали, эти файлы блоков заканчиваются на .service</li>
+<li>Mount units - эти файловые системы монтирования, эти файлы блоков заканчиваются на .mount</li>
+<li>Target units - эти группы объединяют другие блоки, файлы заканчиваются на .target</li>
 </ul>
 
-For example, let's say we boot into our default.target, well this target groups together the networking.service unit, crond.service unit, etc, so once we activate a single unit, everything below that unit gets activated as well.
+Например, мы загружаемся в наш default.target, так что эта целевая группа объединяет unit.service, crond.service unit и т.д., Поэтому, как только мы активируем единицу, все под этой единицей также активируется.
 
-## Exercise
+## Задание
 
-No exercises for this lesson.
+Никаких упражнений для этого урока.
 
-## Quiz Question
+## Вопрос
 
-What unit is used to group together other units?
+Какой блок используется для группировки других единиц?
 
-## Quiz Answer
+## Ответ
 
 target

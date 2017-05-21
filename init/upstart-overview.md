@@ -1,12 +1,12 @@
-# Upstart Overview
+# Обзор Upstart
 
-## Lesson Content
+## Содержание урока
 
-Upstart was developed by Canonical, so it was the init implementation on Ubuntu for a while, however on modern Ubuntu installations systemd is now used. Upstart was created to improve upon the issues with Sys V, such as the strict startup processes, blocking of tasks, etc. Upstart's event and job driven model allow it to respond to events as they happen. 
+Upstart был разработан Canonical, так что какое-то время это была реализация init на Ubuntu, однако на современных установках Ubuntu теперь используется systemd. Upstart был создан для улучшения Sys V, для устранения таких проблем как: строгие процессы запуска, блокировки задач и т.д. Событие Upstart и модель, управляемая заданиями, позволяют ему реагировать на события по мере их возникновения.
 
-To find out if you are using Upstart, if you have a /usr/share/upstart directory that's a pretty good indicator. 
+Чтобы узнать, используете ли вы Upstart, проверьте наличие каталога /usr/share/upstart.
 
-Jobs are the actions that Upstart performs and events are messages that are received from other processes to trigger jobs. To see a list of jobs and their configuration:
+Задания - это действия, которые выполняет Upstart, а события - это сообщения, полученные от других процессов для запуска заданий. Чтобы просмотреть список заданий и их конфигурацию:
 
 <pre>
 pete@icebox:~$ ls /etc/init
@@ -17,33 +17,33 @@ alsa-store.conf              network-interface.conf
 anacron.conf                 network-interface-container.conf
 </pre>
 
-Inside these job configurations, it'll include information on how to start jobs and when to start jobs.
+Внутри этих конфигураций будет содержаться информация о том, как начинать работу и когда её начинать.
 
-For example, in the networking.conf file, it could say something as simple as:
+Например, в файле networking.conf можно было бы сказать что-то простое:
 <pre>
 start on runlevel [235]
 stop on runlevel [0]
 </pre>
 
-This means that it will start setting up networking on runlevel 2, 3 or 5 and will stop networking on runlevel 0. There are many ways to write the configuration file and you'll discover that when you look at the different job configurations available. 
+Это означает, что он начнет настройку сети на уровне выполнения 2, 3 или 5 и прекратит работу в сети на уровне запуска 0. Существует много способов написать конфигурационный файл.
 
-The way that Upstart works is that: 
+Способ, на которым работает Upstart, заключается в том, что:
 
 <ol>
-<li>First, it loads up the job configurations from /etc/init</li>
-<li>Once a startup event occurs, it will run jobs triggered by that event.</li>
-<li>These jobs will make new events and then those events will trigger more jobs</li>
-<li>Upstart continues to do this until it completes all the necessary jobs</li>
+<li>Во-первых, он загружает конфигурации заданий из /etc/init</li>
+<li>Как только произойдет запуск, он будет запускать задания, вызванные этим событием.</li>
+<li>Эти задания будут создавать новые события, а затем эти события вызовут новые задания</li>
+<li>Upstart продолжает делать это до тех пор, пока не выполнит все необходимые задания</li>
 </ol>
 
-## Exercise
+## Задание
 
-If you are running Upstart, see if you can make sense of the job configurations in /etc/init.
+Если вы используете Upstart, проверьте, можете ли вы определить конфигурацию задания в /etc/init.
 
-## Quiz Question
+## Вопрос
 
-What is the init implementation that is used by Ubuntu?
+Какова реализация init, используемая в Ubuntu?
 
-## Quiz Answer
+## Ответ
 
 upstart
