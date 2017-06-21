@@ -1,28 +1,26 @@
-# Choosing a Linux Distribution
+# Выбор дистрибутива Linux
 
 ## Содержание урока
 
-In the previous lesson, we learned about the Linux kernel which powers millions of devices a day. One thing before we move forward, the term Linux is actually quite a misnomer, since it actually refers to the Linux kernel. However, many distributions use the Linux kernel so therefore are commonly known as Linux operating systems. 
+На предыдущем уроке мы узнали о ядре Linux. Прежде всего, прежде чем двигаться дальше, термин Linux на самом деле является довольно неправильным, поскольку он действительно относится к ядру Linux.
 
-A Linux system is divided into three main parts:
+Система Linux разделена на три основные части:
 
 <ul>
-<li>Hardware - This includes all the hardware that your system runs on as well as memory, CPU, disks, etc.</li>
-<li>Linux Kernel - As we discussed above, the kernel is the core of the operating system. It manages the hardware and tells it how to interact with the system.</li>
-<li>User Space - This is where users like yourself will be directly interacting with the system.</li>
+<li>Аппаратное обеспечение. Включает в себя все оборудование, на котором работает ваша система, а также память, процессор, диски и т.д.</li>
+<li>Ядро Linux. Как мы уже говорили выше является ядром операционной системы. Оно управляет оборудованием и рассказывает ему, как взаимодействовать с системой.</li>
+<li>Пользовательское пространство - здесь пользователи, подобные вам, будут напрямую взаимодействовать с системой.</li>
 </ul>
 
-So the first step we’ll need to take is to install Linux on your machine. You have many options to choose from and this course will help inform you and get you started on choosing a Linux distribution. 
-
-There are many Linux distributions to choose from, we’ll just go over the most popular options. 
+Итак, первым шагом, который нам потребуется, является установка Linux на ваш компьютер. Есть много разных дистрибутивов, этот курс проинформирует о практически каждом из них поможет начать работу.
 
 
-## Exercise
+## Задание
 
-No exercises for this lesson.
+Никаких упражнений для этого урока.
 
-## Quiz Question
+## Вопрос
 
-No questions, skip ahead!
+Нет вопросов, идём вперед!
 
-## Quiz Answer
+## Ответ
